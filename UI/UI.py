@@ -27,33 +27,37 @@ class Main_menu(tk.Frame):
 
         sub_file_menu = tk.Menu(file_menu, tearoff=0)
         sub_file_menu.add_command(label='Excel',
-                                  command=open_file)
+                                  command=self.open_file)
         sub_file_menu.add_command(label='CSV',
-                                  command=open_file)
+                                  command=self.open_file)
         sub_file_menu.add_command(label='TXT',
-                                  command=open_file)
+                                  command=self.open_file)
 
         file_menu.add_cascade(label='Импортировать',
                               menu=sub_file_menu,
                               underline=0)
         file_menu.add_cascade(label='Сохранить',
-                              command=save_file)
+                              command=self.save_file)
 
         file_menu.add_separator()
         file_menu.add_command(label='Выход', command=self.onExit)
+
+    def open_file(self):
+        name = fd.askopenfilename()
+        print(name)
+
+    def save_file(self):
+        name = fd.asksaveasfilename()
+        print(name)
 
     def onExit(self):
         self.quit()
 
 
-def open_file():
-    name = fd.askopenfilename()
-    print(name)
 
 
-def save_file():
-    name = fd.asksaveasfilename()
-    print(name)
+
+
 
 
 app = App()
