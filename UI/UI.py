@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog as fd
+from tkinter import messagebox as mb
+
 
 
 class App(tk.Tk):
@@ -51,7 +53,9 @@ class Main_menu(tk.Frame):
         print(name)
 
     def onExit(self):
-        self.quit()
+        choice = mb.askyesno('Выход', 'Вы действительно хотите выйти?')
+        if choice:
+            self.quit()
 
 
 
